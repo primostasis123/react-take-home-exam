@@ -126,7 +126,7 @@ const BookFormDialog = ( { id, setEditingItemId, refetch }: BookFormDialogProps)
             </div>
           </div>
 
-          <DialogFooter>
+          <DialogFooter className="flex-row justify-end space-x-2 ">
             <Button type="submit">Submit</Button>
             <DialogClose asChild>
               <Button variant="outline" type="button" onClick={handleCancel}>
