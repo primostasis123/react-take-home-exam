@@ -1,6 +1,6 @@
 "use client";
 
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient  } from "@tanstack/react-query";
 import BookFormDialog from "./BookFormDialog";
 import { Button } from "./ui/button";
 import { deleteBooks, getBooks } from "@/actions/books.actions";
@@ -9,6 +9,7 @@ import { useSectionObserver } from "@/lib/hooks";
 
 import SecondFrame from "./SecondFrame";
 import ThirdFrame from "./ThirdFrame";
+import { formatDate } from "@/lib/utils";
 
 const Books = () => {
   const [editingItemId, setEditingItemId] = useState<string>("");
@@ -83,7 +84,7 @@ const Books = () => {
                       <td className="p-4 align-middle ">{book.title}</td>
                       <td className="p-4 align-middle ">{book.author}</td>
                       <td className="p-4 align-middle ">
-                        {book.publishedDate.toLocaleDateString()}
+                        {formatDate(book.publishedDate)} 
                       </td>
                       <td className="p-4 align-middle ">{book.genre}</td>
                       <td className="p-4 align-middle ">
@@ -132,5 +133,4 @@ const Books = () => {
     </>
   );
 };
-
 export default Books;

@@ -13,9 +13,10 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
 import { createBooks, getBook, updateBooks } from "@/actions/books.actions";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useBookMutation } from "@/lib/hooks";
-import { BookFormDialogProps } from "@/types/interface";
+import { BookFormDialogProps, IBook } from "@/types/interface";
+import { formatDate } from "@/lib/utils";
 
 const BookFormDialog = ( { id, setEditingItemId, refetch }: BookFormDialogProps) => {
   const [open, setOpen] = useState<boolean>(true);
@@ -27,22 +28,19 @@ const BookFormDialog = ( { id, setEditingItemId, refetch }: BookFormDialogProps)
   const { mutate: create } = useBookMutation({ mutationFn: createBooks, setOpen, refetch, setEditingItemId });
   const { mutate: update } = useBookMutation({ mutationFn: updateBooks, setOpen, refetch, setEditingItemId });
 
-
   const { data } = useQuery({
     queryKey: ["book", id],
     queryFn: () => getBook(id!),
     enabled: id !== "insert", // Only fetch the book if id is not "insert"
     refetchOnWindowFocus : false // Disable refetch on window focus - example when copying data from another tab or window
-  });
+  }); 
 
-
+  
   useEffect(() => {
     if (data) {
       setTitle(data.title);
       setAuthor(data.author);
-      const date = new Date(data.publishedDate);
-      const formattedDate = date.toISOString().slice(0, 10);
-      setPublishDate(formattedDate);
+      setPublishDate(formatDate(data.publishedDate));
       setGenre(data.genre);
     }
   }, [data]);

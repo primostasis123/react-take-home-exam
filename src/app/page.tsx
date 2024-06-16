@@ -1,8 +1,8 @@
 
+
 import Books from '../components/Books'
 
-export default function Home() {
-
+export default async function Home() {
   return (
     <Books/>
   )
