@@ -28,7 +28,7 @@ export const createBooks = async ({
   const date = new Date(publishedDate);
   const isoDate = date.toISOString(); // Outputs: 2024-06-13T00:00:00.000Z
   const { data, error } = await supabase.from("books").insert({ title, author, publishedDate: isoDate, genre });
-  console.log(data, error)
+
 };
 
 export const updateBooks = async ({
