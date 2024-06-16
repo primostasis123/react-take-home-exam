@@ -1,8 +1,8 @@
 "use server";
+//You can only call "use server" functions in server components. 
+//However, if you are using React Query, you can call it in client components.
 
 import SupabaseServer from "@/lib/supabase";
-//You can only use use server in server components. However, if you are using React Query, you can call it in client components.
-
 import { IBook, IBookWithId } from "@/types/interface";
 import { cookies } from "next/headers";
 
