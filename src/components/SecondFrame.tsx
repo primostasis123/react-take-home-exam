@@ -1,3 +1,4 @@
+"use client"
 import { useSectionObserver } from "@/lib/hooks";
 
 const SecondFrame = () => {

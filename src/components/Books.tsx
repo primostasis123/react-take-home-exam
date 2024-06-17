@@ -7,8 +7,6 @@ import { deleteBooks, getBooks } from "@/actions/books.actions";
 import { useState } from "react";
 import { useSectionObserver } from "@/lib/hooks";
 
-import SecondFrame from "./SecondFrame";
-import ThirdFrame from "./ThirdFrame";
 import { formatDate } from "@/lib/utils";
 
 const Books = () => {
@@ -41,7 +39,7 @@ const Books = () => {
 
   return (
     <>
-      <main className="flex-1 p-4 md:p-6 max-w-[1000px] mx-auto  ">
+
         <div className="flex items-center justify-between mb-4 pt-28" id="first" ref={ref} >
           <h1 className="text-2xl font-bold">Book List</h1>
           <Button
@@ -124,11 +122,6 @@ const Books = () => {
         )}
 
 
-        <SecondFrame />
-        
-        <ThirdFrame />
-
-      </main>
 
     </>
   );
